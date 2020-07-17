@@ -15,10 +15,6 @@ public class Receipt {
         this.total = total;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
     public double getSubtotal() {
         return subtotal;
     }
@@ -29,5 +25,17 @@ public class Receipt {
 
     public double getTax() {
         return getTotal() - getSubtotal();
+    }
+
+    public void print() {
+        for(Item item : items) {
+            System.out.println(item.getName());
+            System.out.println("\t\t\t\t\t" + Math.round(item.getPrice() * 100.0) / 100.0);
+            System.out.println("--------------------------");
+        }
+        System.out.println("\nSubtotal: \t\t\t" + Math.round(subtotal * 100.0) / 100.0);
+        System.out.println("Tax: \t\t\t\t" + Math.round((total - subtotal) * 100.0) / 100.0);
+        System.out.println("Total: \t\t\t\t" + Math.round(total * 100.0) / 100.0);
+        System.out.println();
     }
 }
