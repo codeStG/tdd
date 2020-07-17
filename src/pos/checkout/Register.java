@@ -1,6 +1,9 @@
 package pos.checkout;
 
 import pos.products.IProduct;
+import pos.products.impl.Item;
+
+import java.util.List;
 
 public class Register {
     private final double salesTax;
@@ -14,25 +17,47 @@ public class Register {
     }
 
     public void reset() {
-
+        subtotal = 0;
+        total = 0;
     }
 
-    public Receipt submit() {
-        return new Receipt();
+    public Receipt submit(List<Item> items) {
+        return new Receipt(items, subtotal, total);
     }
 
-    public double scan(IProduct product) {
-        total += product.getPrice();
+    public void scan(IProduct product) {
+        double temp = 0;
+        subtotal += product.getPrice();
+        if(product.isTaxable() && product.isImported()) {
+            temp = product.getPrice() * salesTax;
+            temp += product.getPrice() * importDuty;
+            total += product.getPrice() + temp;
+        } else if(product.isTaxable() && !product.isImported()) {
+            temp = product.getPrice() * salesTax;
+            total += product.getPrice() + temp;
+        } else {
+            total += product.getPrice();
+        }
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public double getTotal() {
         return total;
     }
 
-    public double calculateTotal() {
+    //    public double calculateTotal() {
+//
+//    }
+//
+//    public double calculateItemSalesTax() {
+//
+//    }
+//
+//    public double
+//}
 
-    }
 
-    public double calculateItemSalesTax() {
-
-    }
-
-    public double
 }
