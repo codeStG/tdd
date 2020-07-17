@@ -15,7 +15,7 @@ Achieve an end result that clearly focuses on the following elements of code qua
 
 Requirements for the end result:
 * Create a simple console application that prints out the receipt details for the shopping baskets provided.
-* Basic sales tax is applicable at a rate of 10% on all goods excluding books, food and medical products that are
+* Basic sales tax is applicable at a rate of 10% on all goods excluding books, food and medical pos.products that are
  exempt.
 * Import duty is applicable on all imported goods at a rate of 5%, no exemptions.
 * When an item is purchased, a receipt is received that lists:
@@ -30,27 +30,29 @@ The required inputs to test are provided to us along with their expected outputs
 <h2>2. Planning the Solution</h2>
 
 To begin, I decided to break up the problem into manageable chunks, or components, to help visualize the individual
- pieces I would have to work on in order to accomplish the goal, and in what order I should work on those pieces.
+ pieces I would have to work on in pos to accomplish the goal, and in what pos I should work on those pieces.
  
 I decided to move forward following the below outline:
-1. Receipt will be the primary class containing the majority of the logic and calculations.
+1. Register will be the primary class containing the majority of the logic and calculations.
     - This is where we will store and calculate the totals to be displayed or used in calculations:
         - totalCostWithTax
         - totalCostWithoutTax
         - totalTax
-     - Here we will have a List< Product > products which will contain each product that will be displayed on the
+     - Here we will have a List< Product > pos.products which will contain each product that will be displayed on the
       receipt.
-     - This is where we will display the list of products along with their price (tax inclusive) and the total cost
+     - This is where we will display the receipt: (method of payment)
+        - list of pos.products along with their price (tax inclusive) and the
+      total cost
       and total amount of sales tax to be paid.
 
 
-2. Product will be an interface which can be implemented for various types of products.
+2. Product will be an interface which can be implemented for various types of pos.products.
     - boolean isImported(); This will determine return True/False depending on whether the product is an import.
     - String getName(); This will return the product name.
     - int getPrice(); This will return the product price.
 
 
-3. The following classes will implement the Product interface and be considered the "types" of products available for
+3. The following classes will implement the Product interface and be considered the "types" of pos.products available for
  purchase:
     - Book - This class will be abstract and exempt from the base sales tax.
     - Food - This class will be abstract and exempt from the base sales tax.
@@ -60,7 +62,7 @@ I decided to move forward following the below outline:
      into NonTaxable. TBD</b>
 
 
-4. The specific products will extend from their respective abstract class and have the following variables:
+4. The specific pos.products will extend from their respective abstract class and have the following variables:
     - String name;
     - double priceWithoutTax;
     - double priceWithTax;
