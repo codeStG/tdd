@@ -1,5 +1,3 @@
-package pos;
-
 import org.junit.jupiter.api.Test;
 import pos.checkout.Register;
 import pos.products.ShoppingCart;

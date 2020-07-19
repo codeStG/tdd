@@ -30,10 +30,13 @@ public class Register {
         subtotal += product.getPrice();
         if(product.isTaxable() && product.isImported()) {
             temp = product.getPrice() * salesTax;
+            temp = Math.round(temp * 20.0) / 20.0;
             temp += product.getPrice() * importDuty;
+            temp = Math.round(temp * 20.0) / 20.0;
             total += product.getPrice() + temp;
         } else if(product.isTaxable() && !product.isImported()) {
             temp = product.getPrice() * salesTax;
+            temp = Math.round(temp * 20.0) / 20.0;
             total += product.getPrice() + temp;
         } else {
             total += product.getPrice();
