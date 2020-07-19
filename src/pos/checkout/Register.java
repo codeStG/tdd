@@ -26,36 +26,23 @@ public class Register {
     }
 
     public void scan(IProduct product) {
-        double temp = 0;
-        subtotal += product.getPrice();
+        this.subtotal += Math.round(product.getPrice() * 100.0) / 100.0;
+        this.total += Math.round((product.getPrice() + product.getItemTax()) * 100.0) / 100.0;
     }
 
     public double getSubtotal() {
-        return subtotal;
+        return this.subtotal;
     }
 
     public double getTotal() {
-        return total;
+        return this.total;
     }
 
     public double getSalesTax() {
-        return salesTax;
+        return this.salesTax;
     }
 
     public double getImportDuty() {
-        return importDuty;
+        return this.importDuty;
     }
-
-    //    public double calculateTotal() {
-//
-//    }
-//
-//    public double calculateItemSalesTax() {
-//
-//    }
-//
-//    public double
-//}
-
-
 }

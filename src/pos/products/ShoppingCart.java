@@ -12,9 +12,8 @@ public class ShoppingCart {
         items.add(item);
     }
 
-    public List<Item> removeItem(String itemName) {
-        items.remove(itemName);
-        return items;
+    public void removeItem(int itemNumber) {
+        items.remove(itemNumber - 1);
     }
 
     public List<Item> getItems() {

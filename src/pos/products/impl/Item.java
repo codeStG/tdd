@@ -1,16 +1,28 @@
 package pos.products.impl;
 
+import pos.checkout.Register;
 import pos.products.IProduct;
 
 public abstract class Item implements IProduct {
     private final String name;
     private final double price;
     private final boolean isImported;
+    private double itemTax;
 
-    public Item(String name, double price, boolean isImported) {
+    public Item(String name, double price, boolean isImported, Register register) {
         this.name = name;
         this.price = price;
         this.isImported = isImported;
+        if(isImported() && isTaxable()) {
+            this.itemTax = Math.round((price * register.getSalesTax()) * 20.0) / 20.0;
+            this.itemTax += Math.round((price * register.getImportDuty()) * 20.0) / 20.0;
+        } else if(isTaxable()){
+            this.itemTax = Math.round((price * register.getSalesTax()) * 20.0) / 20.0;
+        } else if(isImported()) {
+            this.itemTax += Math.round((price * register.getImportDuty()) * 20.0) / 20.0;
+        } else {
+            this.itemTax = 0.0;
+        }
     }
 
     public String getName() {
@@ -19,6 +31,10 @@ public abstract class Item implements IProduct {
 
     public double getPrice() {
         return price;
+    }
+
+    public double getItemTax() {
+        return itemTax;
     }
 
     public boolean isImported() {
