@@ -16,9 +16,9 @@ public class Main {
         ShoppingCart cartOne = new ShoppingCart();
         List<Item> itemsInCart = cartOne.getItems();
 
-        cartOne.addItem(new NonTaxableItem("Book", 12.49, false));
-        cartOne.addItem(new TaxableItem("Music CD", 14.99, false));
-        cartOne.addItem(new NonTaxableItem("Chocolate Bar", 0.85, false));
+        cartOne.addItem(new NonTaxableItem("Book", 12.49, false, register));
+        cartOne.addItem(new TaxableItem("Music CD", 14.99, false, register));
+        cartOne.addItem(new NonTaxableItem("Chocolate Bar", 0.85, false, register));
 
         register.reset();
 
@@ -31,8 +31,8 @@ public class Main {
 
         ShoppingCart cartTwo = new ShoppingCart();
 
-        cartTwo.addItem(new NonTaxableItem("Box of Chocolates", 10.00, true));
-        cartTwo.addItem(new TaxableItem("Perfume", 47.50, true));
+        cartTwo.addItem(new NonTaxableItem("Box of Chocolates", 10.00, true, register));
+        cartTwo.addItem(new TaxableItem("Perfume", 47.50, true, register));
 
         register.reset();
         itemsInCart = cartTwo.getItems();

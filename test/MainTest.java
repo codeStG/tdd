@@ -17,9 +17,9 @@ public class MainTest {
     public void testReceiptRecordsAccurateTax() {
         var register = new Register(0.1, 0.05);
         var cart1 = new ShoppingCart();
-        cart1.addItem(new NonTaxableItem("Lord of the Rings, the 2 towers", 12.49, false));
-        cart1.addItem(new TaxableItem("Music CD", 14.99, false));
-        cart1.addItem(new NonTaxableItem("Chocolate Bar", 0.85, false));
+        cart1.addItem(new NonTaxableItem("Lord of the Rings, the 2 towers", 12.49, false, register));
+        cart1.addItem(new TaxableItem("Music CD", 14.99, false, register));
+        cart1.addItem(new NonTaxableItem("Chocolate Bar", 0.85, false, register));
 
         register.reset();
 
@@ -35,9 +35,9 @@ public class MainTest {
     public void testReceiptRecordsAccurateTotal() {
         var register = new Register(0.1, 0.05);
         var cart1 = new ShoppingCart();
-        cart1.addItem(new NonTaxableItem("Lord of the Rings, the 2 towers", 12.49, false));
-        cart1.addItem(new TaxableItem("Music CD", 14.99, false));
-        cart1.addItem(new NonTaxableItem("Chocolate Bar", 0.85, false));
+        cart1.addItem(new NonTaxableItem("Lord of the Rings, the 2 towers", 12.49, false, register));
+        cart1.addItem(new TaxableItem("Music CD", 14.99, false, register));
+        cart1.addItem(new NonTaxableItem("Chocolate Bar", 0.85, false, register));
 
         register.reset();
 
