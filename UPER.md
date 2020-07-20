@@ -15,7 +15,7 @@ Achieve an end result that clearly focuses on the following elements of code qua
 
 Requirements for the end result:
 * Create a simple console application that prints out the receipt details for the shopping baskets provided.
-* Basic sales tax is applicable at a rate of 10% on all goods excluding books, food and medical pos.products that are
+* Basic sales tax is applicable at a rate of 10% on all goods excluding books, food and medical products that are
  exempt.
 * Import duty is applicable on all imported goods at a rate of 5%, no exemptions.
 * When an item is purchased, a receipt is received that lists:
@@ -38,21 +38,21 @@ I decided to move forward following the below outline:
         - totalCostWithTax
         - totalCostWithoutTax
         - totalTax
-     - Here we will have a List< Product > pos.products which will contain each product that will be displayed on the
+     - Here we will have a List< Product > products which will contain each product that will be displayed on the
       receipt.
      - This is where we will display the receipt: (method of payment)
-        - list of pos.products along with their price (tax inclusive) and the
+        - list of products along with their price (tax inclusive) and the
       total cost
       and total amount of sales tax to be paid.
 
 
-2. Product will be an interface which can be implemented for various types of pos.products.
+2. Product will be an interface which can be implemented for various types of products.
     - boolean isImported(); This will determine return True/False depending on whether the product is an import.
     - String getName(); This will return the product name.
     - int getPrice(); This will return the product price.
 
 
-3. The following classes will implement the Product interface and be considered the "types" of pos.products available for
+3. The following classes will implement the Product interface and be considered the "types" of products available for
  purchase:
     - Book - This class will be abstract and exempt from the base sales tax.
     - Food - This class will be abstract and exempt from the base sales tax.
@@ -62,7 +62,7 @@ I decided to move forward following the below outline:
      into NonTaxable. TBD</b>
 
 
-4. The specific pos.products will extend from their respective abstract class and have the following variables:
+4. The specific products will extend from their respective abstract class and have the following variables:
     - String name;
     - double priceWithoutTax;
     - double priceWithTax;
@@ -75,8 +75,20 @@ I decided to move forward following the below outline:
 
 <h2>3. Executing the Plan</h2>
 
-<p></p>
+Before I began coding, I got with Abram to help confirm that my plan would execute as ideally as I had imagined it. 
+After stepping through the processes with him, I had determined how exactly to set up the outline of the program and
+ wrote a test to achieve base functionality, which was my MainTest at that point. After getting my MainTest to pass, I was confident in my 
+   understanding of how to develop tests to help achieve desired functionality. I even decided to allow the salesTax
+    and importDuty to be passed in at the time of Register creation in case the company would like to add more
+     locations in different states that have separate taxes. I organized my tests and began writing them to help me
+      refactor my program to its finished state. I began by writing failing tests and then refactoring each class to
+       make the tests pass. At the end, I ran into an issue with my rounding. After consulting with a classmate, 
+       Victor Betts, we had found that my math was slightly off by using Math.round() for my calculations rather than
+        Math.ceil(). After this was complete, I had a finished product that looked exactly how I had envisioned.
 
 <h2>4. Reflection / Refactor</h2>
-
+If I had more time to complete this program, I would develop more tests to fit various scenarios and add in
+ additional error checking to prevent improper input. Additionally, I would create a class that allows for a bit more
+  abstraction between the main class and the running components of the program. The main class has a bit more
+   functionality contained within it than I like it to have.
 <p></p>

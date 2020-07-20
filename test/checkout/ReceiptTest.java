@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReceiptTest {
-    Register testRegister = new Register(0.10, 0.5);
+    Register testRegister = new Register(0.10, 0.05);
     ShoppingCart testCart = new ShoppingCart();
     Receipt testReceipt;
 
@@ -46,5 +46,20 @@ public class ReceiptTest {
         testReceipt = testRegister.submit(testCart.getItems());
 
         assertEquals(57.50, testReceipt.getSubtotal());
+    }
+
+    @Test
+    public void testAccuracyOfReceiptTax() {
+        testCart.addItem(new TaxableItem("Bottle of Perfume", 27.99, true, testRegister));
+        testCart.addItem(new TaxableItem("Bottle of Perfume", 18.99, false, testRegister));
+        testCart.addItem(new NonTaxableItem("Headache Pills", 9.75, false, testRegister));
+        testCart.addItem(new NonTaxableItem("Box of Chocolates", 11.25, true, testRegister));
+        List<Item> itemsInCart = testCart.getItems();
+        for (Item i : itemsInCart) {
+            testRegister.scan(i);
+        }
+        testReceipt = testRegister.submit(testCart.getItems());
+        System.out.println(testReceipt.getTax());
+        assertEquals(6.70, testReceipt.getTax());
     }
 }
