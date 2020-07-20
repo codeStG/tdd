@@ -47,21 +47,4 @@ public class ReceiptTest {
 
         assertEquals(57.50, testReceipt.getSubtotal());
     }
-
-    @Test
-    public void testAccuracyOfReceiptTax() {
-        testCart.addItem(new TaxableItem("Bottle of Perfume", 27.99, true, testRegister));
-        testCart.addItem(new TaxableItem("Bottle of Perfume", 18.99, false, testRegister));
-        testCart.addItem(new NonTaxableItem("Headache Pills", 9.75, false, testRegister));
-        testCart.addItem(new NonTaxableItem("Box of Chocolates", 11.25, true, testRegister));
-
-        List<Item> itemsInCart = testCart.getItems();
-        for (Item i : itemsInCart) {
-            testRegister.scan(i);
-        }
-
-        testReceipt = testRegister.submit(testCart.getItems());
-
-        assertEquals(6.70, testReceipt.getTax());
-    }
 }

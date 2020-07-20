@@ -5,9 +5,9 @@ import pos.products.impl.Item;
 import java.util.List;
 
 public class Receipt {
-    List<Item> items;
-    double subtotal;
-    double total;
+    private final List<Item> items;
+    private final double subtotal;
+    private final double total;
 
     public Receipt(List<Item> items, double subtotal, double total) {
         this.items = items;
@@ -24,7 +24,8 @@ public class Receipt {
     }
 
     public double getTax() {
-        return Math.round((total - subtotal) * 100.0) / 100.0;
+        double tax = Math.round((getTotal() - getSubtotal()) * 100.0) / 100.0;
+        return tax;
     }
 
     public void print() {

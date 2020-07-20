@@ -14,12 +14,12 @@ public abstract class Item implements IProduct {
         this.price = price;
         this.isImported = isImported;
         if(isImported() && isTaxable()) {
-            this.itemTax = Math.round((price * register.getSalesTax()) * 20.0) / 20.0;
-            this.itemTax += Math.round((price * register.getImportDuty()) * 20.0) / 20.0;
+            this.itemTax = Math.ceil((this.price * register.getSalesTax()) * 20.0) / 20.0;
+            this.itemTax += Math.ceil((this.price * register.getImportDuty()) * 20.0) / 20.0;
         } else if(isTaxable()){
-            this.itemTax = Math.round((price * register.getSalesTax()) * 20.0) / 20.0;
+            this.itemTax = Math.ceil((this.price * register.getSalesTax()) * 20.0) / 20.0;
         } else if(isImported()) {
-            this.itemTax += Math.round((price * register.getImportDuty()) * 20.0) / 20.0;
+            this.itemTax += Math.ceil((this.price * register.getImportDuty()) * 20.0) / 20.0;
         } else {
             this.itemTax = 0.0;
         }
